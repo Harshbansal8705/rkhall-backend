@@ -6,11 +6,6 @@ const userSchema = new Schema({
         required: [true, "Email is required"],
         unique: [true, "This email is already registered"]
     },
-    password: {
-        type: String,
-        required: [true, "Password is required"],
-        select: false
-    },
     name: {
         type: String,
         required: [true, "Name is required"]
@@ -18,12 +13,12 @@ const userSchema = new Schema({
     role: {
         type: String,
         required: true,
-        enum: ["user", "admin"],
-        default: "user"
+        enum: ["student", "admin", "alumnus"],
+        default: "student"
     },
-    addresses: {
-        type: [Schema.Types.Mixed],
-        default: []
+    secret: {
+        type: String,
+        required: false
     }
 }, {
     virtuals: {
